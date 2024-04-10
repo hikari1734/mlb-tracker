@@ -2,32 +2,6 @@ import { ColumnDef, createColumnHelper, flexRender, getCoreRowModel, useReactTab
 import React from "react"
 import './index.css'
 import { Games } from "../utils/types"
-// import * as React from 'react';
-// import { DataGrid, GridColDef } from '@mui/x-data-grid';
-
-// type Person = {
-//     name: {
-//     firstName: string
-//     lastName: string
-//     }
-//     age: number
-//     visits: number
-//     status: string
-//     progress: number
-//   }
-  
-//   const defaultData: Person[] = [
-//     {
-//         name: {
-//       firstName: 'tanner',
-//       lastName: 'linsley',
-//         },
-//       age: 24,
-//       visits: 100,
-//       status: 'In Relationship',
-//       progress: 50,
-//     }
-//   ]
 
 interface DataTableProps {
     tableData: Games[];
