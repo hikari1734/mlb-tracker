@@ -1,0 +1,45 @@
+html {
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+table {
+  border: 1px solid black;
+  margin-left: 10px;
+}
+
+tbody {
+  border-bottom: 1px solid black;
+}
+
+th {
+  border-right: 1px solid black;
+  padding: 2px 4px;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+tr {
+  background-color: white;
+  text-align: center;
+}
+
+tr:nth-last-child(odd) {
+  background-color: white;
+}
+
+th:last-child {
+  border-right: 0;
+}
+
+td {
+  border-right: 1px solid black;
+  border-top: 0;
+  padding: 2px 4px;
+  text-align: center;
+}
+
+td:last-child {
+  border-right: 0;
+}
