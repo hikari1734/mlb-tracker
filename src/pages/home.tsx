@@ -10,12 +10,16 @@ function Home() {
       <Header></Header>
       {data && (
         <div style={{ flexGrow: 1 }}>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            Todays Games ({data.dates[0].date})
-          </div>
+          <h4 style={{ display: "flex", justifyContent: "center" }}>
+            Today's Games ({data.dates[0].date})
+          </h4>
           <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-            <div>Total Games: {data.totalGames}</div>
-            <div>Games In Progress: {data.totalGamesInProgress}</div>
+            <div>
+              Total Games: <b>{data.totalGames}</b>
+            </div>
+            <div>
+              Games In Progress: <b>{data.totalGamesInProgress}</b>
+            </div>
           </div>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <DataTable tableData={data.dates[0].games}></DataTable>

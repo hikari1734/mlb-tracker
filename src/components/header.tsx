@@ -11,7 +11,7 @@ function Header() {
       }}
     >
       <h2 style={{ textAlign: "center", margin: "5px 0 5px 0" }}>
-        MLB Tracker
+        <a href="/home">MLB Live Tracker</a>
       </h2>
       <SideNav></SideNav>
     </div>

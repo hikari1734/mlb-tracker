@@ -26,7 +26,6 @@ tr:nth-last-child(odd) {
   background-color: lightgrey;
 }
 
-
 td {
   border-right: 1px solid black;
   border-top: 1px solid black;
@@ -38,5 +37,5 @@ td:last-child {
 }
 
 tfoot {
-  border-top: 0
+  border-top: 0;
 }

@@ -6,16 +6,20 @@ interface CreateTeamsListProps {
 function TeamsList(props: CreateTeamsListProps) {
   return (
     <details open={true}>
-      <summary>{props.header}</summary>
+      <summary style={{ marginBottom: "10px" }}>{props.header}</summary>
       <ul
         style={{
           listStyleType: "none",
-          paddingLeft: "10px",
+          paddingLeft: "15px",
           marginTop: "5px",
         }}
       >
         {props.team.map((team) => {
-          return <li>{team.name}</li>;
+          return (
+            <li>
+              <a href={`/team/${team.id}`}>{team.name}</a>
+            </li>
+          );
         })}
       </ul>
     </details>

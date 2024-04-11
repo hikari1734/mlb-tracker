@@ -36,6 +36,19 @@ export function useLiveGame(id: string) {
   });
 }
 
+export function usePlayByPlay(id: string) {
+  return useQuery({
+    queryKey: ["playByPlay"],
+    queryFn: async () => {
+      const res = await axios.get(
+        `${basePath}${version1}${gamePath}/${id}/playByPlay`
+      );
+      return res.data;
+    },
+    refetchInterval: intervalMs,
+  });
+}
+
 export function useTeams(id?: string) {
   return useQuery({
     queryKey: ["teams"],

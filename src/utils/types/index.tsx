@@ -38,7 +38,7 @@ export interface Teams {
 export interface Venue {
   id: number;
   link: string;
-  name: string;
+  name?: string;
 }
 
 export interface Games {
@@ -136,12 +136,6 @@ export interface MoundVisits {
   home: MoundVisitsUsedRemaining;
 }
 
-export interface Venu {
-  id: number;
-  link: string;
-  name?: string;
-}
-
 export interface Person {
   fullName: string;
   id: number;
@@ -210,7 +204,7 @@ export interface GameData {
   gameInfo: GameInfo;
   moundVisits: MoundVisits;
   officialScorer: Person;
-  officialVenu: Venu;
+  officialVenu: Venue;
   players: Player;
   primaryDatacaster: Person;
   probablePitchers: { away: Person; home: Person };
@@ -341,4 +335,43 @@ export interface LiveGame {
   link: string;
   liveData: LiveData;
   metaData: MetaData;
+}
+
+export interface Count {
+  balls: number;
+  strikes: number;
+  outs: number;
+}
+
+export interface Result {
+  awayScore: number;
+  description: string;
+  event: string;
+  eventType: string;
+  homeScore: number;
+  isOut: boolean;
+  rbi: number;
+  type: string;
+}
+
+export interface Plays {
+  about: {};
+  actionIndex: number[];
+  atBatIndex: number;
+  count: Count;
+  matchup: {};
+  pitchIndex: number[];
+  playEndTime: string;
+  playEvents: {}[];
+  result: Result;
+  runnerIndex: number[];
+  runners: {}[];
+}
+
+export interface PlayByPlay {
+  allPlays: Plays[];
+  copyright: string;
+  currentPlay: Plays;
+  playsByInning: {};
+  scoringPlays: number[];
 }

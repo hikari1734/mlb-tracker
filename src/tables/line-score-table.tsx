@@ -76,7 +76,7 @@ function LineScoreTable(props: LineScoreTableProps) {
             {inningTable.getRowModel().rows.map((row) => (
               <td key={row.id}>
                 {row.getVisibleCells().map((cell) => (
-                  <tr key={cell.id}>
+                  <tr key={cell.id} style={{ backgroundColor: "white" }}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </tr>
                 ))}
@@ -106,7 +106,7 @@ function LineScoreTable(props: LineScoreTableProps) {
             {awayTable.getRowModel().rows.map((row) => (
               <td key={row.id}>
                 {row.getVisibleCells().map((cell) => (
-                  <tr key={cell.id}>
+                  <tr key={cell.id} style={{ backgroundColor: "white" }}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </tr>
                 ))}
@@ -136,7 +136,7 @@ function LineScoreTable(props: LineScoreTableProps) {
             {homeTable.getRowModel().rows.map((row) => (
               <td key={row.id}>
                 {row.getVisibleCells().map((cell) => (
-                  <tr key={cell.id}>
+                  <tr key={cell.id} style={{ backgroundColor: "white" }}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </tr>
                 ))}
