@@ -6,7 +6,6 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { Inning } from "../utils/types";
-import "./styles/line-score-table.css";
 
 interface LineScoreTableProps {
   tableData: [];
@@ -69,6 +68,7 @@ function LineScoreTable(props: LineScoreTableProps) {
           display: "flex",
           flexDirection: "row",
           justifyContent: "flex-end",
+          color: "white",
         }}
       >
         <table>
@@ -76,7 +76,7 @@ function LineScoreTable(props: LineScoreTableProps) {
             {inningTable.getRowModel().rows.map((row) => (
               <td key={row.id}>
                 {row.getVisibleCells().map((cell) => (
-                  <tr key={cell.id} style={{ backgroundColor: "white" }}>
+                  <tr key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </tr>
                 ))}
@@ -106,7 +106,7 @@ function LineScoreTable(props: LineScoreTableProps) {
             {awayTable.getRowModel().rows.map((row) => (
               <td key={row.id}>
                 {row.getVisibleCells().map((cell) => (
-                  <tr key={cell.id} style={{ backgroundColor: "white" }}>
+                  <tr key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </tr>
                 ))}
@@ -136,7 +136,7 @@ function LineScoreTable(props: LineScoreTableProps) {
             {homeTable.getRowModel().rows.map((row) => (
               <td key={row.id}>
                 {row.getVisibleCells().map((cell) => (
-                  <tr key={cell.id} style={{ backgroundColor: "white" }}>
+                  <tr key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </tr>
                 ))}

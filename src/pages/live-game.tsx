@@ -11,7 +11,7 @@ function LiveGame() {
   const { data: playData, isLoading } = usePlayByPlay(id ?? "");
 
   return (
-    <div style={{ display: "flex", paddingRight: "175px" }}>
+    <div style={{ display: "flex", paddingRight: "175px", color: "white" }}>
       <Header></Header>
       {data && (
         <div style={{ flexGrow: 1 }}>
@@ -36,7 +36,7 @@ function LiveGame() {
               style={{
                 display: "flex",
                 justifyContent: "flex-end",
-                paddingRight: "405px",
+                paddingRight: "295px",
               }}
             >
               Scoring Plays

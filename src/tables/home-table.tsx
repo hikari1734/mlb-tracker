@@ -6,134 +6,76 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import React from "react";
-import "./styles/home-table.css";
 import { Games } from "../utils/types";
+import { Link, Strong, Table } from "@radix-ui/themes";
 
 interface DataTableProps {
   tableData: Games[];
 }
 
 function DataTable(props: DataTableProps) {
-  const columnHelper = createColumnHelper<Games>();
-
-  const columns: ColumnDef<Games, any>[] = [
-    columnHelper.accessor("teams.away.team.name", {
-      cell: ({ row }) => (
-        <div>
-          {row.original.teams.away.isWinner ? (
-            <div style={{ width: "200px", fontWeight: "bold" }}>
-              {row.original.teams.away.team.name}
-            </div>
-          ) : (
-            <div style={{ width: "200px" }}>
-              {row.original.teams.away.team.name}
-            </div>
-          )}
-        </div>
-      ),
-      header: () => <div style={{ textAlign: "left" }}>Away Team</div>,
-      footer: (info) => info.column.id,
-    }),
-    columnHelper.accessor("teams.home.team.name", {
-      cell: ({ row }) => (
-        <div>
-          {row.original.teams.home.isWinner ? (
-            <div style={{ width: "200px", fontWeight: "bold" }}>
-              {row.original.teams.home.team.name}
-            </div>
-          ) : (
-            <div style={{ width: "200px" }}>
-              {row.original.teams.home.team.name}
-            </div>
-          )}
-        </div>
-      ),
-      header: () => <div style={{ textAlign: "left" }}>Home Team</div>,
-      footer: (info) => info.column.id,
-    }),
-    columnHelper.accessor("gameDate", {
-      cell: ({ row }) => (
-        <div>
-          {row.original.status.detailedState !== "Postponed" ? (
-            <div style={{ width: "100px" }}>
-              {new Date(row.original.gameDate).toLocaleTimeString()}
-            </div>
-          ) : (
-            <div>Postponed</div>
-          )}
-        </div>
-      ),
-      header: () => <div style={{ textAlign: "center" }}>Game Time</div>,
-      footer: (info) => info.column.id,
-    }),
-    columnHelper.accessor("seriesGameNumber", {
-      cell: ({ row }) => (
-        <div style={{ textAlign: "center" }}>
-          {row.original.seriesGameNumber} of {row.original.gamesInSeries}
-        </div>
-      ),
-      header: () => <div style={{ textAlign: "center" }}>Game Number</div>,
-      footer: (info) => info.column.id,
-    }),
-    columnHelper.accessor("gameDate", {
-      cell: ({ row }) => (
-        <div>
-          {row.original.status.detailedState !== "Postponed" && (
-            <div style={{ textAlign: "center" }}>
-              {new Date() >
-                new Date(
-                  new Date(row.original.gameDate).getTime() - 60000 * 30
-                ) && (
-                <a href={`/game/${row.original.gamePk}`}>
-                  {row.original.teams.away.score} -{" "}
-                  {row.original.teams.home.score}
-                </a>
-              )}
-            </div>
-          )}
-        </div>
-      ),
-      header: () => <div style={{ textAlign: "center" }}>Score</div>,
-      footer: (info) => info.column.id,
-    }),
-  ];
-
-  const table = useReactTable({
-    data: props.tableData,
-    columns: columns,
-    getCoreRowModel: getCoreRowModel(),
-  });
-
   return (
-    <table>
-      <thead>
-        {table.getHeaderGroups().map((headerGroup) => (
-          <tr key={headerGroup.id}>
-            {headerGroup.headers.map((header) => (
-              <th key={header.id}>
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
+    <Table.Root
+      variant="surface"
+      style={{ borderColor: "#FA4616", backgroundColor: "white" }}
+    >
+      <Table.Header>
+        <Table.Row>
+          <Table.ColumnHeaderCell>Away Team</Table.ColumnHeaderCell>
+          <Table.ColumnHeaderCell>Home Team</Table.ColumnHeaderCell>
+          <Table.ColumnHeaderCell>Game Time</Table.ColumnHeaderCell>
+          <Table.ColumnHeaderCell>Game in Series</Table.ColumnHeaderCell>
+          <Table.ColumnHeaderCell>Score</Table.ColumnHeaderCell>
+        </Table.Row>
+      </Table.Header>
+
+      <Table.Body>
+        {props.tableData.map((game) => {
+          return (
+            <Table.Row>
+              {game.teams.away.isWinner ? (
+                <Table.Cell>
+                  <Strong>{game.teams.away.team.name}</Strong>
+                </Table.Cell>
+              ) : (
+                <Table.Cell>{game.teams.away.team.name}</Table.Cell>
+              )}
+              {game.teams.home.isWinner ? (
+                <Table.Cell>
+                  <Strong>{game.teams.home.team.name}</Strong>
+                </Table.Cell>
+              ) : (
+                <Table.Cell>{game.teams.home.team.name}</Table.Cell>
+              )}
+              <Table.Cell>
+                {game.status.detailedState !== "Postponed" ? (
+                  <div>{new Date(game.gameDate).toLocaleTimeString()}</div>
+                ) : (
+                  <div>Postponed</div>
+                )}
+              </Table.Cell>
+              <Table.Cell style={{ textAlign: "center" }}>
+                {game.seriesGameNumber} of {game.gamesInSeries}
+              </Table.Cell>
+              <Table.Cell style={{ textAlign: "center" }}>
+                {game.status.detailedState !== "Postponed" && (
+                  <div>
+                    {new Date() >
+                      new Date(
+                        new Date(game.gameDate).getTime() - 60000 * 30
+                      ) && (
+                      <Link href={`/game/${game.gamePk}`}>
+                        {game.teams.away.score} - {game.teams.home.score}
+                      </Link>
                     )}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody>
-        {table.getRowModel().rows.map((row) => (
-          <tr key={row.id}>
-            {row.getVisibleCells().map((cell) => (
-              <td key={cell.id}>
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+                  </div>
+                )}
+              </Table.Cell>
+            </Table.Row>
+          );
+        })}
+      </Table.Body>
+    </Table.Root>
   );
 }
 

@@ -1,3 +1,4 @@
+import { Link } from "@radix-ui/themes";
 import SideNav from "./side-nav";
 
 function Header() {
@@ -11,7 +12,7 @@ function Header() {
       }}
     >
       <h2 style={{ textAlign: "center", margin: "5px 0 5px 0" }}>
-        <a href="/home">MLB Live Tracker</a>
+        <Link href="/home">MLB Live Tracker</Link>
       </h2>
       <SideNav></SideNav>
     </div>

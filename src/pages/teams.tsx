@@ -12,7 +12,13 @@ function Teams() {
       <Header></Header>
       {data && (
         <div style={{ flexGrow: 1 }}>
-          <h4 style={{ display: "flex", justifyContent: "center" }}>
+          <h4
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              color: "white",
+            }}
+          >
             {data.teams[0].name}
           </h4>
         </div>

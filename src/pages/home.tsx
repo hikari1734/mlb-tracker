@@ -10,10 +10,22 @@ function Home() {
       <Header></Header>
       {data && (
         <div style={{ flexGrow: 1 }}>
-          <h4 style={{ display: "flex", justifyContent: "center" }}>
+          <h4
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              color: "white",
+            }}
+          >
             Today's Games ({data.dates[0].date})
           </h4>
-          <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              color: "white",
+            }}
+          >
             <div>
               Total Games: <b>{data.totalGames}</b>
             </div>

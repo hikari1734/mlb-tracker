@@ -9,11 +9,12 @@ function ScoringPlays(props: ScoringPlaysProps) {
   const scoringPlaysArray = props.allPlays.filter((play, index) =>
     props.scoringPlays.includes(index)
   );
-  console.log(scoringPlaysArray);
   return (
-    <div style={{ display: "flex", justifyContent: "flex-end" }}>
+    <div
+      style={{ display: "flex", justifyContent: "flex-end", color: "white" }}
+    >
       {scoringPlaysArray.length > 0 && (
-        <div style={{ border: "1px solid black" }}>
+        <div>
           <ul>
             {scoringPlaysArray.map((play) => {
               return (
@@ -22,7 +23,7 @@ function ScoringPlays(props: ScoringPlaysProps) {
                     <div
                       style={{
                         overflow: "wrap",
-                        width: "500px",
+                        width: "400px",
                       }}
                     >
                       ({play.result.rbi} runs) {play.result.description}
@@ -31,7 +32,7 @@ function ScoringPlays(props: ScoringPlaysProps) {
                     <div
                       style={{
                         overflow: "wrap",
-                        width: "500px",
+                        width: "400px",
                       }}
                     >
                       (Field Error) {play.result.description}

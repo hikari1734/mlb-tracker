@@ -4,6 +4,7 @@ import Home from "./pages/home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LiveGame from "./pages/live-game";
 import Teams from "./pages/teams";
+import "@radix-ui/themes/styles.css";
 
 const queryClient = new QueryClient();
 

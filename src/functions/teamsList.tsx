@@ -1,3 +1,15 @@
+import {
+  Avatar,
+  Box,
+  Button,
+  Card,
+  Dialog,
+  Flex,
+  Heading,
+  Link,
+  Text,
+} from "@radix-ui/themes";
+
 interface CreateTeamsListProps {
   team: { name: string; id: number }[];
   header: string;
@@ -5,24 +17,32 @@ interface CreateTeamsListProps {
 
 function TeamsList(props: CreateTeamsListProps) {
   return (
-    <details open={true}>
-      <summary style={{ marginBottom: "10px" }}>{props.header}</summary>
-      <ul
-        style={{
-          listStyleType: "none",
-          paddingLeft: "15px",
-          marginTop: "5px",
-        }}
-      >
-        {props.team.map((team) => {
-          return (
-            <li>
-              <a href={`/team/${team.id}`}>{team.name}</a>
-            </li>
-          );
-        })}
-      </ul>
-    </details>
+    <div>
+      <Heading size="2" style={{ color: "white" }}>
+        {props.header}
+      </Heading>
+      {props.team.map((team) => {
+        return (
+          <Box maxWidth="200px">
+            <Dialog.Root>
+              <Dialog.Trigger>
+                <Link href={`/team/${team.id}`}>
+                  <Button
+                    variant="ghost"
+                    style={{
+                      width: "200px",
+                      justifyContent: "flex-start",
+                    }}
+                  >
+                    {team.name}
+                  </Button>
+                </Link>
+              </Dialog.Trigger>
+            </Dialog.Root>
+          </Box>
+        );
+      })}
+    </div>
   );
 }
 
