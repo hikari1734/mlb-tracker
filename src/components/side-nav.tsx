@@ -14,7 +14,7 @@ function SideNav() {
       style={{
         display: "flex",
         flexDirection: "column",
-        width: "200px",
+        width: "175px",
         border: "1px solid black",
       }}
     >

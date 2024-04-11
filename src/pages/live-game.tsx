@@ -11,7 +11,7 @@ function LiveGame() {
   const { data: playData, isLoading } = usePlayByPlay(id ?? "");
 
   return (
-    <div style={{ display: "flex", paddingRight: "200px" }}>
+    <div style={{ display: "flex", paddingRight: "175px" }}>
       <Header></Header>
       {data && (
         <div style={{ flexGrow: 1 }}>

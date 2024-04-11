@@ -1,4 +1,4 @@
-export const intervalMs = 60000;
+export const intervalMs = 30000;
 
 export const basePath = "http://statsapi.mlb.com/api";
 

@@ -12,35 +12,37 @@ function ScoringPlays(props: ScoringPlaysProps) {
   console.log(scoringPlaysArray);
   return (
     <div style={{ display: "flex", justifyContent: "flex-end" }}>
-      <div style={{ border: "1px solid black" }}>
-        <ul>
-          {scoringPlaysArray.map((play) => {
-            return (
-              <li style={{}}>
-                {play.result.eventType !== "field_error" ? (
-                  <div
-                    style={{
-                      overflow: "wrap",
-                      width: "500px",
-                    }}
-                  >
-                    ({play.result.rbi} runs) {play.result.description}
-                  </div>
-                ) : (
-                  <div
-                    style={{
-                      overflow: "wrap",
-                      width: "500px",
-                    }}
-                  >
-                    (Field Error) {play.result.description}
-                  </div>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      {scoringPlaysArray.length > 0 && (
+        <div style={{ border: "1px solid black" }}>
+          <ul>
+            {scoringPlaysArray.map((play) => {
+              return (
+                <li style={{}}>
+                  {play.result.eventType !== "field_error" ? (
+                    <div
+                      style={{
+                        overflow: "wrap",
+                        width: "500px",
+                      }}
+                    >
+                      ({play.result.rbi} runs) {play.result.description}
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        overflow: "wrap",
+                        width: "500px",
+                      }}
+                    >
+                      (Field Error) {play.result.description}
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
