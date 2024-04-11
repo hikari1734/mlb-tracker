@@ -53,5 +53,8 @@
   "devDependencies": {
     "@tanstack/react-query": "^5.29.0",
     "@types/react-burger-menu": "^2.8.7"
+  },
+  "overrides": {
+    "typescript": "^5.4.5"
   }
 }
