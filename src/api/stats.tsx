@@ -19,6 +19,7 @@ export function useSchedule(id?: number) {
       );
       return res.data;
     },
+    refetchInterval: intervalMs,
   });
 }
 
@@ -31,6 +32,16 @@ export function useLiveGame(id: string) {
       );
       return res.data;
     },
-    // refetchInterval: intervalMs,
+    refetchInterval: intervalMs,
+  });
+}
+
+export function useTeams(id?: string) {
+  return useQuery({
+    queryKey: ["teams"],
+    queryFn: async () => {
+      const res = await axios.get(`${basePath}${version1}/teams/${id}`);
+      return res.data;
+    },
   });
 }

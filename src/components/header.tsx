@@ -1,13 +1,19 @@
+import SideNav from "./side-nav";
+
 function Header() {
-  const header = {
-    display: "flex",
-    justifyContent: "space-between",
-  };
   return (
-    <div style={header}>
-      <div>Side content</div>
-      <div style={{ justifySelf: "center" }}>MLB Tracker</div>
-      <div>something!!</div>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "start",
+        flexDirection: "column",
+        width: "200px",
+      }}
+    >
+      <h2 style={{ textAlign: "center", margin: "5px 0 5px 0" }}>
+        MLB Tracker
+      </h2>
+      <SideNav></SideNav>
     </div>
   );
 }

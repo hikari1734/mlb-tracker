@@ -16,14 +16,18 @@ function LineScoreTable(props: LineScoreTableProps) {
   const columnHelper = createColumnHelper<Inning>();
   const awayColumns: ColumnDef<Inning, any>[] = [
     columnHelper.accessor("away.runs", {
-      cell: (row) => <div style={{ width: "15px" }}>{row.getValue()}</div>,
+      cell: (row) => (
+        <div style={{ width: "15px" }}>{row.getValue() ?? "-"}</div>
+      ),
       footer: (info) => info.column.id,
     }),
   ];
 
   const homeColumns: ColumnDef<Inning, any>[] = [
     columnHelper.accessor("home.runs", {
-      cell: (row) => <div style={{ width: "15px" }}>{row.getValue()}</div>,
+      cell: (row) => (
+        <div style={{ width: "15px" }}>{row.getValue() ?? "-"}</div>
+      ),
       footer: (info) => info.column.id,
     }),
   ];

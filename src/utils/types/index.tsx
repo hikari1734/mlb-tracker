@@ -26,6 +26,7 @@ export interface AwayHomeTeam {
   score: number;
   seriesNumber: number;
   splitSquad: boolean;
+  isWinner?: boolean;
   team: Team;
 }
 

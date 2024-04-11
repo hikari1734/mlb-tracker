@@ -18,19 +18,49 @@ function DataTable(props: DataTableProps) {
 
   const columns: ColumnDef<Games, any>[] = [
     columnHelper.accessor("teams.away.team.name", {
-      cell: (row) => <div style={{ width: "200px" }}>{row.getValue()}</div>,
+      cell: ({ row }) => (
+        <div>
+          {row.original.teams.away.isWinner ? (
+            <div style={{ width: "200px", fontWeight: "bold" }}>
+              {row.original.teams.away.team.name}
+            </div>
+          ) : (
+            <div style={{ width: "200px" }}>
+              {row.original.teams.away.team.name}
+            </div>
+          )}
+        </div>
+      ),
       header: () => <div style={{ textAlign: "left" }}>Away Team</div>,
       footer: (info) => info.column.id,
     }),
     columnHelper.accessor("teams.home.team.name", {
-      cell: (row) => <div style={{ width: "200px" }}>{row.getValue()}</div>,
+      cell: ({ row }) => (
+        <div>
+          {row.original.teams.home.isWinner ? (
+            <div style={{ width: "200px", fontWeight: "bold" }}>
+              {row.original.teams.home.team.name}
+            </div>
+          ) : (
+            <div style={{ width: "200px" }}>
+              {row.original.teams.home.team.name}
+            </div>
+          )}
+        </div>
+      ),
       header: () => <div style={{ textAlign: "left" }}>Home Team</div>,
       footer: (info) => info.column.id,
     }),
     columnHelper.accessor("gameDate", {
-      cell: (row) => (
-        <div style={{ width: "100px" }}>
-          {new Date(row.getValue()).toLocaleTimeString()}
+      cell: ({ row }) => (
+        <div>
+          {row.original.status.detailedState !== "Postponed" ? (
+            <div style={{ width: "100px" }}>
+              {new Date(row.original.gameDate).toLocaleTimeString()}
+            </div>
+          ) : (
+            <div>Postponed</div>
+          )}
         </div>
       ),
       header: () => <div style={{ textAlign: "center" }}>Game Time</div>,
@@ -47,14 +77,23 @@ function DataTable(props: DataTableProps) {
     }),
     columnHelper.accessor("gameDate", {
       cell: ({ row }) => (
-        <div style={{ textAlign: "center" }}>
-          {new Date() >
-            new Date(
-              new Date(row.original.gameDate).getTime() - 60000 * 30
-            ) && <a href={`/game/${row.original.gamePk}`}>Live!</a>}
+        <div>
+          {row.original.status.detailedState !== "Postponed" && (
+            <div style={{ textAlign: "center" }}>
+              {new Date() >
+                new Date(
+                  new Date(row.original.gameDate).getTime() - 60000 * 30
+                ) && (
+                <a href={`/game/${row.original.gamePk}`}>
+                  {row.original.teams.away.score} -{" "}
+                  {row.original.teams.home.score}
+                </a>
+              )}
+            </div>
+          )}
         </div>
       ),
-      header: () => <div style={{ textAlign: "center" }}>View Game</div>,
+      header: () => <div style={{ textAlign: "center" }}>Score</div>,
       footer: (info) => info.column.id,
     }),
   ];

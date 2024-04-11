@@ -3,13 +3,13 @@ import Header from "../components/header";
 import DataTable from "../tables/home-table";
 
 function Home() {
-  const { data, isFetching } = useSchedule();
+  const { data } = useSchedule();
 
   return (
-    <div>
+    <div style={{ display: "flex", paddingRight: "200px" }}>
       <Header></Header>
-      {!isFetching && data && (
-        <div>
+      {data && (
+        <div style={{ flexGrow: 1 }}>
           <div style={{ display: "flex", justifyContent: "center" }}>
             Todays Games ({data.dates[0].date})
           </div>
