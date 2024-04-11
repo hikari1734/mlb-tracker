@@ -8,7 +8,7 @@ function LiveGame() {
   const { id } = useParams();
 
   const { data } = useLiveGame(id ?? "");
-  const { data: playData } = usePlayByPlay(id ?? "");
+  const { data: playData, isLoading } = usePlayByPlay(id ?? "");
 
   return (
     <div style={{ display: "flex", paddingRight: "200px" }}>
@@ -41,10 +41,12 @@ function LiveGame() {
             >
               Scoring Plays
             </h4>
-            <ScoringPlays
-              allPlays={playData.allPlays}
-              scoringPlays={playData.scoringPlays}
-            ></ScoringPlays>
+            {!isLoading && (
+              <ScoringPlays
+                allPlays={playData.allPlays}
+                scoringPlays={playData.scoringPlays}
+              ></ScoringPlays>
+            )}
           </div>
         </div>
       )}

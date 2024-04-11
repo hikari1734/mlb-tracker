@@ -10,7 +10,14 @@ import {
 
 function SideNav() {
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        width: "200px",
+        border: "1px solid black",
+      }}
+    >
       {/* <h4 style={{ margin: "10px 0 0 0" }}>Teams</h4> */}
       <h4 style={{ margin: "10px 0 5px 0" }}>American League</h4>
       <TeamsList team={ALWest} header={"AL West"}></TeamsList>
