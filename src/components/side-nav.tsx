@@ -1,5 +1,5 @@
 import { Heading, ScrollArea } from "@radix-ui/themes";
-import TeamsList from "../functions/teamsList";
+import TeamsList from "../functions/teams-list";
 import {
   ALCentral,
   ALEast,

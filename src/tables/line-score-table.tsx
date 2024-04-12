@@ -1,150 +1,58 @@
-import {
-  ColumnDef,
-  createColumnHelper,
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
+import { Table } from "@radix-ui/themes";
 import { Inning } from "../utils/types";
 
 interface LineScoreTableProps {
-  tableData: [];
+  tableData: Inning[];
 }
 
 function LineScoreTable(props: LineScoreTableProps) {
-  const columnHelper = createColumnHelper<Inning>();
-  const awayColumns: ColumnDef<Inning, any>[] = [
-    columnHelper.accessor("away.runs", {
-      cell: (row) => (
-        <div style={{ width: "15px" }}>{row.getValue() ?? "-"}</div>
-      ),
-      footer: (info) => info.column.id,
-    }),
-  ];
-
-  const homeColumns: ColumnDef<Inning, any>[] = [
-    columnHelper.accessor("home.runs", {
-      cell: (row) => (
-        <div style={{ width: "15px" }}>{row.getValue() ?? "-"}</div>
-      ),
-      footer: (info) => info.column.id,
-    }),
-  ];
-
-  const inningColumns: ColumnDef<Inning, any>[] = [
-    columnHelper.accessor("num", {
-      cell: (row) => <div style={{ width: "15px" }}>{row.getValue()}</div>,
-      footer: (info) => info.column.id,
-    }),
-  ];
-
-  const awayTable = useReactTable({
-    data: props.tableData,
-    columns: awayColumns,
-    getCoreRowModel: getCoreRowModel(),
-  });
-
-  const homeTable = useReactTable({
-    data: props.tableData,
-    columns: homeColumns,
-    getCoreRowModel: getCoreRowModel(),
-  });
-
-  const inningTable = useReactTable({
-    data: props.tableData,
-    columns: inningColumns,
-    getCoreRowModel: getCoreRowModel(),
-  });
-
   return (
     <div
       style={{
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "row",
+        justifyContent: "flex-start",
+        paddingLeft: "40px",
       }}
     >
-      <div
+      <Table.Root
+        variant="surface"
         style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "flex-end",
-          color: "white",
+          borderColor: "#FA4616",
+          backgroundColor: "white",
         }}
       >
-        <table>
-          <tbody>
-            {inningTable.getRowModel().rows.map((row) => (
-              <td key={row.id}>
-                {row.getVisibleCells().map((cell) => (
-                  <tr key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </tr>
-                ))}
-              </td>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "flex-end",
-        }}
-      >
-        <div
-          style={{
-            textAlign: "center",
-            verticalAlign: "middle",
-            lineHeight: "27px",
-          }}
-        >
-          Away
-        </div>
-        <table>
-          <tbody>
-            {awayTable.getRowModel().rows.map((row) => (
-              <td key={row.id}>
-                {row.getVisibleCells().map((cell) => (
-                  <tr key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </tr>
-                ))}
-              </td>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "flex-end",
-        }}
-      >
-        <div
-          style={{
-            textAlign: "center",
-            verticalAlign: "middle",
-            lineHeight: "27px",
-          }}
-        >
-          Home
-        </div>
-        <table>
-          <tbody>
-            {homeTable.getRowModel().rows.map((row) => (
-              <td key={row.id}>
-                {row.getVisibleCells().map((cell) => (
-                  <tr key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </tr>
-                ))}
-              </td>
-            ))}
-          </tbody>
-        </table>
-      </div>
+        <Table.Header>
+          <Table.Row>
+            {props.tableData.map((inning) => {
+              return (
+                <Table.ColumnHeaderCell>{inning.num}</Table.ColumnHeaderCell>
+              );
+            })}
+          </Table.Row>
+        </Table.Header>
+
+        <Table.Body>
+          <Table.Row>
+            {props.tableData.map((game) => {
+              return (
+                <Table.Cell style={{ textAlign: "center" }}>
+                  {game.away.runs}
+                </Table.Cell>
+              );
+            })}
+          </Table.Row>
+          <Table.Row>
+            {props.tableData.map((game) => {
+              return (
+                <Table.Cell style={{ textAlign: "center" }}>
+                  {game.home.runs}
+                </Table.Cell>
+              );
+            })}
+          </Table.Row>
+        </Table.Body>
+      </Table.Root>
     </div>
   );
 }

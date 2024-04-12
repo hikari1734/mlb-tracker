@@ -11,7 +11,13 @@ function ScoringPlays(props: ScoringPlaysProps) {
   );
   return (
     <div
-      style={{ display: "flex", justifyContent: "flex-end", color: "white" }}
+      style={{
+        display: "flex",
+        justifyContent: "flex-end",
+        color: "white",
+        fontSize: "12px",
+        paddingRight: "5px",
+      }}
     >
       {scoringPlaysArray.length > 0 && (
         <div>

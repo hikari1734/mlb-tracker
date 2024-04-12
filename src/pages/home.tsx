@@ -1,4 +1,5 @@
 import { useSchedule } from "../api/stats";
+import FollowedGames from "../components/followed-games";
 import Header from "../components/header";
 import DataTable from "../tables/home-table";
 
@@ -6,8 +7,7 @@ function Home() {
   const { data } = useSchedule();
 
   return (
-    <div style={{ display: "flex", paddingRight: "200px" }}>
-      <Header></Header>
+    <div style={{ display: "flex" }}>
       {data && (
         <div style={{ flexGrow: 1 }}>
           <h4
