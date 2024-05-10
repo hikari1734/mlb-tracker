@@ -1,10 +1,7 @@
 import { Theme } from "@radix-ui/themes";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import FollowedGames from "./components/followed-games";
-import Header from "./components/header";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
@@ -12,20 +9,10 @@ const root = ReactDOM.createRoot(
 );
 document.body.style.backgroundColor = "#0c2340";
 
-const queryClient = new QueryClient();
-
 root.render(
   <React.StrictMode>
     <Theme accentColor="orange" style={{ backgroundColor: "#0c2340" }}>
-      <QueryClientProvider client={queryClient}>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <Header></Header>
-          <div style={{ flexGrow: 1 }}>
-            <App />
-          </div>
-          <FollowedGames></FollowedGames>
-        </div>
-      </QueryClientProvider>
+      <App></App>
     </Theme>
   </React.StrictMode>
 );

@@ -1,19 +1,11 @@
-import {
-  ColumnDef,
-  createColumnHelper,
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
-import React from "react";
-import { Games } from "../utils/types";
 import { Link, Strong, Table } from "@radix-ui/themes";
+import { Games } from "../utils/types";
 
-interface DataTableProps {
+interface HomeTableProps {
   tableData: Games[];
 }
 
-function DataTable(props: DataTableProps) {
+function HomeTable(props: HomeTableProps) {
   return (
     <Table.Root
       variant="surface"
@@ -32,7 +24,7 @@ function DataTable(props: DataTableProps) {
       <Table.Body>
         {props.tableData.map((game) => {
           return (
-            <Table.Row>
+            <Table.Row key={game.gameGuid}>
               {game.teams.away.isWinner ? (
                 <Table.Cell>
                   <Strong>{game.teams.away.team.name}</Strong>
@@ -79,4 +71,4 @@ function DataTable(props: DataTableProps) {
   );
 }
 
-export default DataTable;
+export default HomeTable;

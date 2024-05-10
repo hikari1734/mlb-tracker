@@ -59,6 +59,7 @@ function FollowedGames() {
                   display: "flex",
                   paddingBottom: "5px",
                 }}
+                key={game.gameGuid}
               >
                 <Box maxWidth="200px">
                   <Dialog.Root>

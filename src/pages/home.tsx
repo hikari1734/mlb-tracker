@@ -1,7 +1,5 @@
 import { useSchedule } from "../api/stats";
-import FollowedGames from "../components/followed-games";
-import Header from "../components/header";
-import DataTable from "../tables/home-table";
+import HomeTable from "../tables/home-table";
 
 function Home() {
   const { data } = useSchedule();
@@ -34,7 +32,7 @@ function Home() {
             </div>
           </div>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <DataTable tableData={data.dates[0].games}></DataTable>
+            <HomeTable tableData={data.dates[0].games}></HomeTable>
           </div>
         </div>
       )}

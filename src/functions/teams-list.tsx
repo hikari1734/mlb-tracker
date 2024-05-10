@@ -1,14 +1,4 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  Card,
-  Dialog,
-  Flex,
-  Heading,
-  Link,
-  Text,
-} from "@radix-ui/themes";
+import { Box, Button, Dialog, Heading, Link } from "@radix-ui/themes";
 
 interface CreateTeamsListProps {
   team: { name: string; id: number }[];
@@ -23,7 +13,7 @@ function TeamsList(props: CreateTeamsListProps) {
       </Heading>
       {props.team.map((team) => {
         return (
-          <Box maxWidth="200px">
+          <Box maxWidth="200px" key={team.name}>
             <Dialog.Root>
               <Dialog.Trigger>
                 <Link href={`/team/${team.id}`}>
