@@ -1,6 +1,6 @@
 export const intervalMs = 30000;
 
-export const basePath = "http://statsapi.mlb.com/api";
+export const basePath = "https://statsapi.mlb.com/api";
 
 export const schedulePath = "/schedule/games/";
 export const gamePath = "/game";
