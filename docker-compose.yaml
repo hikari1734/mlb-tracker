@@ -1,5 +1,5 @@
 services:
   mlb:
-    image: /mlb-app-frontend:latest
+    image: localhost/mlb-app-frontend:latest
     ports:
       - "3002:3000"
